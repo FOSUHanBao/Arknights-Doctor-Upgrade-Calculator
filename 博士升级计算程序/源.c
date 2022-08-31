@@ -1,4 +1,4 @@
-//一个博士升级计算程序（V1.0）
+//一个博士升级计算程序（v0.1）
 #include<stdio.h>
 #define EXP_PER_SANITY 12//1理智换12声望
 #define MIN_PER_SANITY 6//6分钟恢复1理智
