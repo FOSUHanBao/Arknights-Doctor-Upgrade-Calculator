@@ -54,15 +54,15 @@ int main(void)
 		b++;
 	}
 	int Current_Level, //目前的等级
-		Current_EXP, //目前的声望
-		Target_Level, //目标等级
-		minutes, //分钟数
-		hours, //小时数
-		days, //天数
-		time, //总计时间
-		EXP_1, //目前累积声望
-		EXP_2, //升级所需声望
-		sanity;//消耗的理智
+	    Current_EXP, //目前的声望
+	    Target_Level, //目标等级
+	    minutes, //分钟数
+	    hours, //小时数
+	    days, //天数
+	    time, //总计时间
+	    EXP_1, //目前累积声望
+	    EXP_2, //升级所需声望
+	    sanity;//消耗的理智
 	int status_1, status_2, i;
 	printf("欢迎使用博士升级计算程序（输入字母可退出程序）。\n");
 	while (1)
