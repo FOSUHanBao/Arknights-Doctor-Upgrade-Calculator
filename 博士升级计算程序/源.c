@@ -1,4 +1,4 @@
-//一个博士升级计算程序（v0.1）
+//一个博士升级计算程序（V0.2）
 #include<stdio.h>
 #define EXP_PER_SANITY 12//1理智换12声望
 #define MIN_PER_SANITY 6//6分钟恢复1理智
@@ -50,31 +50,32 @@ int main(void)
 	while (b < 120)//计算每一级的累积经验
 	{
 		for (c = 0;c < b;c++)
-			Accumulated_EXP[b] = Accumulated_EXP[b-1] + EXP_per_level[c];
+			Accumulated_EXP[b] = Accumulated_EXP[b - 1] + EXP_per_level[c];
 		b++;
 	}
 	int Current_Level, //目前的等级
-	    Current_EXP, //目前的声望
-	    Target_Level, //目标等级
-	    minutes, //分钟数
-	    hours, //小时数
-	    days, //天数
-	    time, //总计时间
-	    EXP_1, //目前累积声望
-	    EXP_2, //升级所需声望
-	    sanity;//消耗的理智
+		Current_EXP, //目前的声望
+		Target_Level, //目标等级
+		minutes, //分钟数
+		hours, //小时数
+		days, //天数
+		time, //总计时间
+		EXP_1, //目前累积声望
+		EXP_2, //升级所需声望
+		sanity;//消耗的理智
 	int status_1, status_2, i;
 	printf("欢迎使用博士升级计算程序（输入字母可退出程序）。\n");
 	while (1)
 	{
 		printf("请输入您目前的等级（1级-119级）：");
-                if (scanf_s("%d", &Current_Level) == 0)//如果输入的不是数字则结束程序
+		if (scanf_s("%d", &Current_Level) == 0)//如果输入的不是数字则结束程序
 			break;
 		while (Current_Level < 1 || Current_Level>119)
 			//检测输入的等级是否在1-119范围内
 		{
 			printf("您输入等级不在范围内，请重新输入：");
-			scanf_s("%d", &Current_Level);
+			if(scanf_s("%d", &Current_Level) == 0)//如果输入的不是数字则结束程序
+			return;
 		}
 		printf("请输入您目前的声望值：");
 		if (scanf_s("%d", &Current_EXP) == 0)//如果输入的不是数字则结束程序
@@ -83,16 +84,18 @@ int main(void)
 			//检测输入的声望值是否大于当前等级升下一等级所需经验或小于0
 		{
 			printf("您输入声望值有误，请重新输入：");
-			scanf_s("%d", &Current_EXP);
+			if(scanf_s("%d", &Current_EXP) == 0)//如果输入的不是数字则结束程序
+			return;
 		}
 		printf("请输入您要升到的等级（2级-120级）：");
 		if (scanf_s("%d", &Target_Level) == 0)//如果输入的不是数字则结束程序
-		    break;
+			break;
 		while (Target_Level <= Current_Level || Target_Level > 120)
 			//检测输入的目标等级是否小于或等于当前等级
 		{
 			printf("您输入的等级有误，请重新输入：");
-			scanf_s("%d", &Target_Level);
+			if(scanf_s("%d", &Target_Level) == 0)//如果输入的不是数字则结束程序
+			return;
 		}
 		EXP_1 = Accumulated_EXP[Current_Level - 1] + Current_EXP;//求目前累积声望
 		EXP_2 = Accumulated_EXP[Target_Level - 1] - EXP_1;//求升级所需声望
